@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        /* Basic reset and variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #4F46E5;
+            --secondary: #F43F5E;
+            --dark: #1F2937;
+            --light: #F9FAFB;
+            --gray: #6B7280;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        /* Main container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        /* Error elements */
+        .error-image {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+        
+        .error-circle {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(79, 70, 229, 0.1);
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+        
+        .error-number {
+            font-size: 80px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .error-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--dark);
+            animation: fadeIn 1s;
+        }
+        
+        .error-message {
+            font-size: 18px;
+            max-width: 500px;
+            margin: 0 auto 30px;
+            color: var(--gray);
+            line-height: 1.6;
+            animation: fadeIn 1.2s;
+        }
+        
+        /* Buttons */
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            animation: fadeIn 1.5s;
+        }
+        
+        .button {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .button-primary {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+        }
+        
+        .button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(79, 70, 229, 0.2);
+        }
+        
+        .button-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .button-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(79, 70, 229, 0.1);
+        }
+        
+        /* Simple animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: left;
+                gap: 50px;
+            }
+            
+            .error-content {
+                flex: 1;
+            }
+            
+            .error-image {
+                margin: 0;
+                flex: 0 0 250px;
+            }
+            
+            .error-message {
+                margin: 0 0 30px 0;
+            }
+            
+            .buttons {
+                justify-content: flex-start;
+            }
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 767px) {
+            .error-circle {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .error-number {
+                font-size: 60px;
+            }
+            
+            .error-title {
+                font-size: 24px;
+            }
+            
+            .error-message {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-image">
+            <div class="error-circle">
+                <div class="error-number">404</div>
+            </div>
+        </div>
+        
+        <div class="error-content">
+            <h1 class="error-title">Page Not Found</h1>
+            <p class="error-message">
+                We're sorry, but the page you are looking for doesn't exist. 
+                It might have been moved or deleted.
+            </p>
+            <div class="buttons">
+                <a href="/" class="button button-primary">Go Home</a>
+                <a href="/contact" class="button button-secondary">Contact Support</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

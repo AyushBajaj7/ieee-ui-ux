@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Interface</title>
+  <style>
+    /* Base styles */
+    :root {
+      --primary: #4361ee;
+      --secondary: #3f37c9;
+      --accent: #f72585;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --success: #4cc9f0;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+    
+    /* Header */
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 1rem 0;
+      box-shadow: var(--shadow);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      opacity: 0.8;
+    }
+    
+    .mobile-menu {
+      display: none;
+      cursor: pointer;
+    }
+    
+    /* Hero section */
+    .hero {
+      padding: 4rem 0;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      border-radius: 0 0 20px 20px;
+      margin-bottom: 3rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+    
+    /* Section styles */
+    section {
+      padding: 3rem 0;
+    }
+    
+    section h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: var(--primary);
+    }
+    
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: var(--primary);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+    
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+    
+    .timeline-item:nth-child(odd) {
+      left: 0;
+    }
+    
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background-color: white;
+      border: 4px solid var(--accent);
+      border-radius: 50%;
+      top: 15px;
+      z-index: 1;
+    }
+    
+    .timeline-item:nth-child(odd)::after {
+      right: -17px;
+    }
+    
+    .timeline-item:nth-child(even)::after {
+      left: -17px;
+    }
+    
+    .timeline-content {
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+    
+    .timeline-content h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    
+    .timeline-date {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    
+    /* FAQ Accordion */
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .faq-question {
+      padding: 1rem;
+      background-color: white;
+      color: var(--dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+    }
+    
+    .faq-answer {
+      padding: 0 1rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background-color: #f8f9fa;
+    }
+    
+    .faq-item.active .faq-answer {
+      padding: 1rem;
+      max-height: 500px;
+    }
+    
+    /* Team Registration */
+    .registration-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-section h3 {
+      margin-bottom: 1rem;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 1rem;
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu {
+        display: block;
+      }
+      
+      .timeline::after {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-item:nth-child(even) {
+        left: 0;
+      }
+      
+      .timeline-item::after {
+        left: 15px;
+      }
+      
+      .timeline-item:nth-child(odd)::after {
+        right: auto;
+        left: 15px;
+      }
+      
+      .timeline-item:nth-child(even)::after {
+        left: 15px;
+      }
+      
+      .footer-section {
+        flex: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header with navigation -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">TeamSync</div>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#timeline">Timeline</a>
+          <a href="#faq">FAQ</a>
+          <a href="#registration">Registration</a>
+        </div>
+        <div class="mobile-menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <h1>Join Our Team Challenge Event</h1>
+      <p>Connect with like-minded professionals, showcase your skills, and win amazing prizes!</p>
+      <a href="#registration" class="btn">Register Your Team</a>
+    </div>
+  </section>
+
+  <!-- Timeline section -->
+  <section id="timeline">
+    <div class="container">
+      <h2>Event Timeline</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-date">March 15, 2025</span>
+            <h3>Registration Opens</h3>
+            <p>Team registration begins. Early bird discounts available for the first 50 teams.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-date">April 5, 2025</span>
+            <h3>Registration Closes</h3>
+            <p>Last day to register your team and complete all required documentation.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-date">April 10, 2025</span>
+            <h3>Orientation Webinar</h3>
+            <p>Mandatory online briefing for all participating teams with Q&A session.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-date">April 15, 2025</span>
+            <h3>Challenge Kickoff</h3>
+            <p>The event officially begins! Teams receive their first set of challenges.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-date">May 15, 2025</span>
+            <h3>Final Submissions</h3>
+            <p>Deadline for submitting all challenge solutions and project documentation.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-date">May 30, 2025</span>
+            <h3>Awards Ceremony</h3>
+            <p>Winners announced during our virtual gala event with special guests!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ section -->
+  <section id="faq">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-container">
+        <div class="faq-item active">
+          <div class="faq-question">
+            Who can participate in the team challenge?
+            <span>+</span>
+          </div>
+          <div class="faq-answer">
+            <p>The challenge is open to teams of 3-5 professionals from any industry. Students in their final year of studies are also eligible to participate. Each team should have at least one member with 2+ years of relevant experience.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            What is the registration fee?
+            <span>+</span>
+          </div>
+          <div class="faq-answer">
+            <p>The standard registration fee is $199 per team. Early bird registrations (before March 25) receive a 20% discount. Non-profit organizations and educational institutions can apply for a reduced fee of $99.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            What equipment will we need?
+            <span>+</span>
+          </div>
+          <div class="faq-answer">
+            <p>All team members will need reliable internet access and a computer with video conferencing capabilities. Specific software requirements will be communicated during the orientation webinar, but most tasks can be completed using standard productivity tools.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            What prizes are available?
+            <span>+</span>
+          </div>
+          <div class="faq-answer">
+            <p>The winning team will receive $10,000 in cash prizes, professional development opportunities, and industry recognition. Second and third place teams will receive $5,000 and $2,500 respectively. Additionally, there are special category awards for innovation, sustainability, and social impact.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            How will teams be evaluated?
+            <span>+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Teams will be evaluated by a panel of industry experts based on creativity, technical execution, presentation quality, and potential impact of solutions. A detailed scoring rubric will be provided during the orientation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Registration section -->
+  <section id="registration">
+    <div class="container">
+      <h2>Team Registration</h2>
+      <div class="registration-form">
+        <form>
+          <div class="form-group">
+            <label for="team-name">Team Name *</label>
+            <input type="text" id="team-name" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="team-leader">Team Leader Name *</label>
+            <input type="text" id="team-leader" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="team-size">Number of Team Members *</label>
+            <select id="team-size" class="form-control" required>
+              <option value="">Select team size</option>
+              <option value="3">3 members</option>
+              <option value="4">4 members</option>
+              <option value="5">5 members</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="industry">Industry/Sector *</label>
+            <select id="industry" class="form-control" required>
+              <option value="">Select your industry</option>
+              <option value="technology">Technology</option>
+              <option value="healthcare">Healthcare</option>
+              <option value="finance">Finance</option>
+              <option value="education">Education</option>
+              <option value="manufacturing">Manufacturing</option>
+              <option value="retail">Retail</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Additional Information (Optional)</label>
+            <textarea id="message" class="form-control" rows="4"></textarea>
+          </div>
+          
+          <button type="submit" class="btn">Submit Registration</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>Email: info@teamsync.com</p>
+          <p>Phone: (555) 123-4567</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <p><a href="#timeline" style="color: white; text-decoration: none;">Timeline</a></p>
+          <p><a href="#faq" style="color: white; text-decoration: none;">FAQ</a></p>
+          <p><a href="#registration" style="color: white; text-decoration: none;">Registration</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <p>Twitter</p>
+          <p>LinkedIn</p>
+          <p>Instagram</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 TeamSync Challenge. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ accordion functionality
+    document.querySelectorAll('.faq-question').forEach(item => {
+      item.addEventListener('click', event => {
+        const parent = item.parentNode;
+        parent.classList.toggle('active');
+        
+        const isActive = parent.classList.contains('active');
+        item.querySelector('span').textContent = isActive ? '-' : '+';
+        
+        // Close other open items
+        document.querySelectorAll('.faq-item.active').forEach(openItem => {
+          if (openItem !== parent) {
+            openItem.classList.remove('active');
+            openItem.querySelector('span').textContent = '+';
+          }
+        });
+      });
+    });
+    
+    // Mobile menu toggle (simplified version)
+    document.querySelector('.mobile-menu').addEventListener('click', () => {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    });
+  </script>
+</body>
+</html>
